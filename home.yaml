@@ -1,0 +1,18 @@
+---
+
+- hosts: all
+    
+  tasks:
+    - blockinfile:
+        dest: ~/.profile
+        block: |
+                if [ -d "$HOME/.profile.d" ]; then
+                  for name in `ls $HOME/.profile.d/`; do
+                    source $HOME/.profile.d/$name
+                  done
+                fi
+
+    - file:
+        path: ~/.profile.d
+        state: directory
+        mode: 0755

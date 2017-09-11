@@ -1,0 +1,13 @@
+---
+
+- hosts: all
+
+  tasks:
+    - package: name={{ item }} state=latest
+      become: yes
+      with_items:
+        - tmux
+        - mc
+        - ack-grep
+        - git
+        - ansible

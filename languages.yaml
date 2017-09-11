@@ -1,0 +1,15 @@
+---
+
+- hosts: all
+
+  tasks:
+    #TODO: golang install
+
+    - name: Python 2/3
+      package: name={{ item }} state=latest
+      become: yes
+      with_items:
+        - python3-dev
+        - python-dev
+        - python3-pip
+        - python-pip
