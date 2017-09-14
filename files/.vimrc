@@ -1,90 +1,28 @@
-if &compatible
-  set nocompatible               " Be iMproved
-endif
+set nocompatible               " Be iMproved
 
-" Required:
-"set runtimepath+=/home/donor/.vim/bundle/repos/github.com/Shougo/dein.vim
 
-" Required:
-"if dein#load_state('/home/donor/.vim/bundle')
-"  call dein#begin('/home/donor/.vim/bundle')
-"
-"  " Let dein manage dein
-"  " Required:
-"  call dein#add('/home/donor/.vim/bundle/repos/github.com/Shougo/dein.vim')
-"
-"  " Add or remove your plugins here:
-"  "call dein#add('Shougo/neosnippet.vim')
-"  "call dein#add('Shougo/neosnippet-snippets')
-"
-"  "My plugins
-"  call dein#add('scrooloose/nerdtree')
-"  call dein#add('sjl/badwolf')                " bad wolf colorscheme
-"  call dein#add('majutsushi/tagbar')                " tagbar
-""  call dein#add('dagwieers/asciidoc-vim')     " asciidoc syntax
-"  call dein#add('Rykka/riv.vim')            " support for reStructured Text (sphynx)
-"  call dein#add('fatih/vim-go')           " Go IDE only support native go tools
-"  call dein#add('Shougo/unite.vim')           " fuzzy search/jump to buffers files lines
-"  call dein#add('rking/ag.vim')           " vim proxy for ag silver searcher
-"  call dein#add('Shougo/vimproc.vim', {'build': 'make'})           " fuzzy search/jump to buffers files lines
-"  call dein#add('davidhalter/jedi-vim', {'lazy': 1, 'on_ft': ['python', 'cython', 'pyrex']})
-""  call dein#add('nvie/vim-flake8')      " Python linter
-""  call dein#add('vim-syntastic/syntastic')      " Python linter
-"  call dein#add('w0rp/ale')  " Async linter 
-""  call dein#add('tell-k/vim-autopep8')
-"
-"  if has('nvim')
-"    call dein#add('Shougo/deoplete.nvim')
-"    call dein#add('zchee/deoplete-jedi')
-"    call dein#add('zchee/deoplete-go', { 'build': 'make' })
-"  endif
-"
-"  " Required:
-"  call dein#end()
-"  call dein#save_state()
-"endif
 
-" Autoinstall Plug pluginmanager {{{
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall
-endif
+call plug#begin('~/.local/share/nvim/plugged')
 
-call plug#begin('~/.config/nvim/plugged')
-
+  Plug 'tpope/vim-sensible' " Sensible defaults 
+  Plug 'rstacruz/vim-opinion' " More sensible defaults
+  Plug 'ctrlpvim/ctrlp.vim' " Fuzzy-matching go-to file
+  Plug 'felikz/ctrlp-py-matcher'
   Plug 'scrooloose/nerdtree'
   Plug 'sjl/badwolf'                " bad wolf colorscheme
-  Plug 'majutsushi/tagbar'                " tagbar
-"  call dein#add('dagwieers/asciidoc-vim')     " asciidoc syntax
-  Plug 'Rykka/riv.vim'            " support for reStructured Text (sphynx)
+"  Plug 'majutsushi/tagbar'                " tagbar
+"  Plug 'Rykka/riv.vim'            " support for reStructured Text (sphynx)
 "  Plug 'fatih/vim-go'           " Go IDE only support native go tools
-  Plug 'Shougo/unite.vim'           " fuzzy search/jump to buffers files lines
-  Plug 'rking/ag.vim'           " vim proxy for ag silver searcher
-  Plug 'Shougo/vimproc.vim', {'build': 'make'}           " fuzzy search/jump to buffers files lines
-"  Plug 'davidhalter/jedi-vim', {'lazy': 1, 'on_ft': ['python', 'cython', 'pyrex']}
-  Plug 'nvie/vim-flake8'      " Python linter
-"  call dein#add('vim-syntastic/syntastic')      " Python linter
+"  Plug 'rking/ag.vim'           " vim proxy for ag silver searcher
   Plug 'w0rp/ale'  " Async linter 
-"  call dein#add('tell-k/vim-autopep8')
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'zchee/deoplete-jedi'
-"  call dein#add('zchee/deoplete-go', { 'build': 'make' })
-
+  Plug 'tpope/vim-commentary'   " 'gc' to comment 
+  Plug 'vim-python/python-syntax'
+  Plug 'Vimjas/vim-python-pep8-indent'
+  Plug 'davidhalter/jedi-vim'
 
 call plug#end()
 
-" Required:
-filetype plugin indent on
-syntax enable
 
-" If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
-"endif
-
-"End dein Scripts-------------------------
-"
 
 "General settings
 "
@@ -139,19 +77,28 @@ map <F1> :NERDTreeToggle<CR>
 
 
 "Plugins
+
+" CtrlP
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+
+"ale
+let g:ale_fixers = {} " define before use in next line
+let g:ale_fixers.python = ['autopep8']
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 0
+
+"jedi-vim
+let g:jedi#smart_auto_mappings = 0
+
 "deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode' 
+"let g:deoplete#enable_at_startup = 1
+"let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode' 
 
 " Languages
 " Python
-let g:python3_host_prog = '/usr/bin/python3'
-let g:python_host_prog = '/usr/bin/python'
+"let g:python3_host_prog = '/usr/bin/python3'
+"let g:python_host_prog = '/usr/bin/python'
 
-let g:deoplete#sources#jedi#python_path = g:python3_host_prog
-
-
-" EMC btilogs
-
-au BufRead *btilog* setfiletype btilog
-au BufRead *btifc* setfiletype messages
+"let g:deoplete#sources#jedi#python_path = g:python3_host_prog

@@ -16,3 +16,8 @@
         path: ~/.profile.d
         state: directory
         mode: 0755
+    
+    - copy:
+        src: profiled/staff.sh
+        dest: ~/.profile.d/staff.sh
+        mode: 0755

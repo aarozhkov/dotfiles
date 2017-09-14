@@ -13,3 +13,19 @@
         - python-dev
         - python3-pip
         - python-pip
+        - python-virtualenv
+        - python3-venv
+
+    
+    - block:
+        - get_url:
+            url: https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz
+            dest: /tmp/golang.tar.gz
+            validate_certs: no
+        - unarchive:
+            src: /tmp/golang.tar.gz
+            dest: /usr/local/
+          become: yes
+        - copy:
+            src: profiled/golang.sh
+            dest: ~/.profile.d/golang.sh
