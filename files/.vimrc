@@ -4,10 +4,9 @@ set nocompatible               " Be iMproved
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-  Plug 'tpope/vim-sensible' " Sensible defaults 
+  Plug 'tpope/vim-sensible' " Sensible defaults
   Plug 'rstacruz/vim-opinion' " More sensible defaults
-  Plug 'ctrlpvim/ctrlp.vim' " Fuzzy-matching go-to file
-  Plug 'felikz/ctrlp-py-matcher'
+  Plug 'ctrlpvim/ctrlp.vim' " Fuzzy-matching go-to file TODO make binding for ctrlp for buffers
   Plug 'scrooloose/nerdtree'
   Plug 'sjl/badwolf'                " bad wolf colorscheme
 "  Plug 'majutsushi/tagbar'                " tagbar
@@ -18,10 +17,24 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'tpope/vim-commentary'   " 'gc' to comment 
   Plug 'vim-python/python-syntax'
   Plug 'Vimjas/vim-python-pep8-indent'
+"  Plug 'mattn/emmet-vim'  " Write HTML fast
   Plug 'davidhalter/jedi-vim'
-
+  Plug 'fatih/vim-go'
+  Plug 'Shougo/neocomplete.vim'
+  Plug 'felikz/ctrlp-py-matcher'
+  let g:ctrlp_show_hidden = 1
+  let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+  Plug 'dyng/ctrlsf.vim' " TODO: made bindings for that plug
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  let g:airline_left_sep=''
+  let g:airline_right_sep=''
+  let g:airline_theme='tomorrow'
+  " Explicitly specify which extensions to use
+  let g:airline_extensions = ['ctrlp', 'tabline', 'ale', 'whitespace']
 call plug#end()
 
+"TODO: check https://github.com/sloria/dotfiles/blob/master/roles/vim/files/vimrc
 
 
 "General settings
@@ -78,11 +91,6 @@ map <F1> :NERDTreeToggle<CR>
 
 "Plugins
 
-" CtrlP
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-
-
 "ale
 let g:ale_fixers = {} " define before use in next line
 let g:ale_fixers.python = ['autopep8']
@@ -92,13 +100,19 @@ let g:ale_completion_enabled = 0
 "jedi-vim
 let g:jedi#smart_auto_mappings = 0
 
+" CtrlSF search plug for ag/ack/grep
+let g:ctrlsf_regex_pattern = 1
+
 "deoplete
 "let g:deoplete#enable_at_startup = 1
 "let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode' 
 
 " Languages
 " Python
+let g:python_highlight_all = 1
+
 "let g:python3_host_prog = '/usr/bin/python3'
 "let g:python_host_prog = '/usr/bin/python'
 
-"let g:deoplete#sources#jedi#python_path = g:python3_host_prog
+" GOLANG
+"autocmd FileType go let 
