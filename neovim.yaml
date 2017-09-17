@@ -2,30 +2,30 @@
 
 - hosts: all
   vars:
-    ppa: 'ppa:neovim-ppa/unstable'
+    ppa: 'ppa:jonathonf/vim'
 
   tasks:
     - apt_repository: repo="{{ ppa }}" state=present
       become: yes
 
-    - apt: name=neovim state=latest
+    - apt: name=vim state=latest
       become: yes
 
-    - alternatives: name={{ item }} path=/usr/bin/nvim
-      become: yes
-      with_items:
-        - vi
-        - vim
-        - editor
+#    - alternatives: name={{ item }} path=/usr/bin/nvim
+#      become: yes
+#      with_items:
+#        - vi
+#        - vim
+#        - editor
 
-    - pip:
-        name: neovim
-        executable: "{{ item }}"
-        state: present
-        extra_args: --user
-      with_items:
-        - pip3
-        - pip2
+      #    - pip:
+      #        name: neovim
+      #        executable: "{{ item }}"
+      #        state: present
+      #        extra_args: --user
+      #      with_items:
+      #        - pip3
+      #        - pip2
 
     - file:
         name: '~/.config/nvim'
@@ -34,35 +34,33 @@
     
     - copy:
         src: .vimrc
-        dest: '~/.config/nvim/init.vim'
+        dest: '~/.vimrc'
         mode: 0644
 
-    - file: name='~/.local/share/nvim/site/autoload/' state=directory mode=0755
+    - file: name='~/.vim/autoload/' state=directory mode=0755
 
     - get_url:
         url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        dest: '~/.local/share/nvim/site/autoload/plug.vim'
+        dest: '~/.vim/autoload/plug.vim'
         force: yes
 
-    - command: nvim "+silent! PlugInstall" +qall!
+    - command: vim "+silent! PlugInstall" +qall!
 
 
-    - name: 'For python jedi'
-        pip:
-          name: jedi
-          executable: "{{ item }}"
-          state: present
-          extra_args: --user
-        with_items:
-          - pip3
-          - pip2
+    - pip:
+        name: jedi
+        executable: "{{ item }}"
+        state: present
+        extra_args: --user
+      with_items:
+        - pip3
+        - pip2
 
-    - name: 'Autopep'
-        pip:
-          name: autopep8
-          executable: "{{ item }}"
-          state: present
-          extra_args: --user
-        with_items:
-          - pip3
-          - pip2
+    - pip:
+        name: autopep8
+        executable: "{{ item }}"
+        state: present
+        extra_args: --user
+      with_items:
+        - pip3
+        - pip2
