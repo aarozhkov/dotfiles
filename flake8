@@ -1,0 +1,6 @@
+[flake8]
+max-line-length = 170
+ignore = WPS323, WPS110, WPS111, WPS421, DAR1
+
+[darglint]
+strictness=short

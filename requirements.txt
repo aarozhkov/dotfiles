@@ -1,0 +1,11 @@
+future
+isort
+jedi
+flake8
+autopep8
+mypy
+mypy-extensions
+python-language-server[all]
+pyls-isort
+pyls-mypy
+pynvim

@@ -33,15 +33,32 @@ end
 vim.lsp.set_log_level("trace")
 
 -- Python
+-- lspconfig.pyright.setup{on_attach = on_attach}
 lspconfig.pyls.setup{
+  handlers = {
+    ["textDocument/publishDiagnostics"] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics, {
+        -- Disable virtual_text
+        virtual_text = false,
+        underline = true,
+      }
+    ),
+  },
   settings = {
     pyls = {
       plugins = {
-        yapf = { enabled = true}
+        pylint = { enabled = true},
+        yapf = { enabled = false},
+        autopep8 = { enabled = true},
+        flake8 = { enabled = true},
+        pyls_mypy = {
+            enabled = true,
+          },
       }
     }
   },
   on_attach = on_attach,
+  -- cmd = {"pyls"},
   cmd = {"pyls", "--log-file", "/tmp/pyls.log", "-vv"},
 }
 vim.api.nvim_command[[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]

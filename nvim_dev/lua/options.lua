@@ -34,3 +34,5 @@ vim.o.hlsearch = true
 vim.o.incsearch = true
 vim.o.lazyredraw = true
 vim.o.magic = true
+vim.o.scrolloff = 8
+vim.o.incsearch = true

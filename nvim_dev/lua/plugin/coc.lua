@@ -5,11 +5,10 @@ local eval = vim.api.nvim_eval
 local Coc = {} 
 -- Coc extensions
 vim.g.coc_global_extensions = {
-	'coc-actions',
+	-- 'coc-actions',
 	'coc-html',
 	'coc-json',
 	'coc-markdownlint',
-	'coc-spell-checker',
 	'coc-tabnine',
 }
 
@@ -96,7 +95,7 @@ vim.fn.nvim_set_keymap('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]],
 api.nvim_set_keymap('n', '<leader>j', '<Plug>(coc-diagnostic-next)', silent_opt)
 api.nvim_set_keymap('n', '<leader>k', '<Plug>(coc-diagnostic-prev)', silent_opt)
 
-api.nvim_set_keymap('n', 'gd', '<Plug>(coc-definition)<cr>', {noremap = true, silent = true})
+api.nvim_set_keymap('n', 'gd', '<Plug>(coc-definition)<cr>', silent_opt)
 api.nvim_set_keymap('n', 'gi', '<Plug>(coc-implementation)<cr>', silent_opt )
 api.nvim_set_keymap('n', 'gr', '<Plug>(coc-references)<cr>', silent_opt )
 api.nvim_set_keymap('n', 'gt', '<Plug>(coc-type-definition)<cr>', silent_opt )
@@ -107,5 +106,3 @@ api.nvim_set_keymap('n', '<leader>ac', '<Plug>(coc-codeaction)', silent_opt)
 api.nvim_set_keymap('n', '<leader>f', '<cmd>lua Coc.format_code()<cr>', silent_opt)
 
 return Coc
-
-
