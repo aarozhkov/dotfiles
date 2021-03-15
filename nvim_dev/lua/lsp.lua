@@ -47,9 +47,9 @@ lspconfig.pyls.setup{
   settings = {
     pyls = {
       plugins = {
-        pylint = { enabled = true},
+        pylint = { enabled = false},
         yapf = { enabled = false},
-        autopep8 = { enabled = true},
+        autopep8 = { enabled = false},
         flake8 = { enabled = true},
         pyls_mypy = {
             enabled = true,
