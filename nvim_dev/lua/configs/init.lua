@@ -1,0 +1,6 @@
+require('configs.compee')
+require('configs.telescope')
+require('configs.gitsigns')
+require('configs.lualine')
+require('configs.treesitter')
+require('nvim_comment').setup()
