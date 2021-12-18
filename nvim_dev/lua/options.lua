@@ -1,6 +1,6 @@
 vim.cmd('set iskeyword+=-')                  --treat dash separated words as a word text object"
 vim.o.fileencoding="utf-8"                  --The encoding written to file
-vim.o.t_Co="256"                            --Support 256 colors
+vim.go.t_Co="256"                            --Support 256 colors
 vim.wo.signcolumn="yes"                      --Always show the signcolumn, otherwise it would shift the text each time
 --vim.o.updatetime=300                      --Faster completion
 --vim.o.timeoutlen=100                      --By default timeoutlen is 1000 ms

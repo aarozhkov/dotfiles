@@ -1,0 +1,1 @@
+require("languages.terraform").lsp()
