@@ -12,3 +12,4 @@ require "general.git"
 
 require "miscs.comments"
 require "miscs.nvimtree"
+require "miscs.lualine"
