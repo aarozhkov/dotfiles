@@ -31,3 +31,10 @@ keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require
 
 -- Nvimtree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+
+
+-- Buffers
+keymap("n", "<leader>bf", "<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
+keymap("n", "<leader>bc", "<cmd>Bwipeout<cr>", opts) -- close buffer
+keymap("n", "<leader>bb", "<cmd>b#<cr>", opts) -- close buffer
+

@@ -47,9 +47,19 @@
 Why README underscored? TODO - delete underscore
 
 
-### Colortheme
+### Colorscheme
 
 Tokyonight - make more contrast for Nvim-Tree git hl. NvimTreeGitDirty and other color tegs customize
+
+
+### Which Key
+
+This tool have separated keybindings configuration. Which applyes globally
+
+Have handy modes:
+* show registers - works prefect!
+* marks - i don't use it but can be usefull
+* spelling - Cool!! TODO: NEED to implement good spelling engine for Eng and Rus
 
 ### Not sorted
 * Key supporter. Dash with keys
