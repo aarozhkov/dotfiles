@@ -24,12 +24,11 @@ local diff = {
   cond = hide_in_width
 }
 
-local mode = {
-	"mode",
-	fmt = function(str)
-		return "-- " .. str .. " --"
-	end,
-}
+-- local mode = {
+-- 	"mode",
+-- 	fmt = function(str)
+-- 		return "-- " .. str .. " --"
+-- 	end,
 
 local filetype = {
 	"filetype",
@@ -58,9 +57,9 @@ local location = {
 -- 	return chars[index]
 -- end
 
-local spaces = function()
-	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
-end
+-- local spaces = function()
+-- 	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+-- end
 
 lualine.setup({
 	options = {
@@ -70,6 +69,7 @@ lualine.setup({
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
 		always_divide_middle = true,
+        globalstatus = true,
 	},
 	sections = {
 		lualine_a = { "mode" },
