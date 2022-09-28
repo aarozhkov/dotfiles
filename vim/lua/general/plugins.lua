@@ -48,6 +48,9 @@ return packer.startup(function(use)
 
 	-- Appereance
 	use("folke/tokyonight.nvim")
+	use("morhetz/gruvbox")
+	use("altercation/vim-colors-solarized")
+	use("hzchirs/vim-material")
 	use("EdenEast/nightfox.nvim")
 
 	-- Completion (nvim-cmp based) plugins
@@ -73,6 +76,7 @@ return packer.startup(function(use)
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 	use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+    use('scalameta/nvim-metals')
 
 	-- TreeSitter - syntax tokenized highlight
 	use({
@@ -84,6 +88,7 @@ return packer.startup(function(use)
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
+    use("sindrets/diffview.nvim")
 
 	-- Miscs
 	use("kyazdani42/nvim-web-devicons")
