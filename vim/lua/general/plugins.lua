@@ -51,6 +51,8 @@ return packer.startup(function(use)
 	use("morhetz/gruvbox")
 	use("altercation/vim-colors-solarized")
 	use("hzchirs/vim-material")
+	use("rebelot/kanagawa.nvim")
+    use("sainnhe/everforest")
 	use("EdenEast/nightfox.nvim")
 
 	-- Completion (nvim-cmp based) plugins
