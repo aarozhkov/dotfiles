@@ -62,11 +62,11 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
 	use("hrsh7th/cmp-nvim-lsp") -- integration with lsp
 	use("hrsh7th/cmp-nvim-lua") -- nvim lua support
-	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
+	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
 	-- Telescope
@@ -78,7 +78,7 @@ return packer.startup(function(use)
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 	use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
-    use('scalameta/nvim-metals')
+  use('scalameta/nvim-metals')
 
 	-- TreeSitter - syntax tokenized highlight
 	use({
@@ -90,7 +90,7 @@ return packer.startup(function(use)
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
-    use("sindrets/diffview.nvim")
+  use("sindrets/diffview.nvim")
 
 	-- Miscs
 	use("kyazdani42/nvim-web-devicons")
